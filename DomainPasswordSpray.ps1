@@ -249,26 +249,7 @@ function Invoke-DomainPasswordSpray{
     }
 }
 
-function Countdown-Timer
-{
-    param(
-        $Seconds = 1800,
-        $Message = "[*] Pausing to avoid account lockout.",
-        [switch] $Quiet = $False
-    )
-    if ($quiet)
-    {
-        Write-Host "$Message: Waiting for $($Seconds/60) minutes. $($Seconds - $Count)"
-        Start-Sleep -Seconds $Seconds
-    } else {
-        foreach ($Count in (1..$Seconds))
-        {
-            Write-Progress -Id 1 -Activity $Message -Status "Waiting for $($Seconds/60) minutes. $($Seconds - $Count) seconds remaining" -PercentComplete (($Count / $Seconds) * 100)
-            Start-Sleep -Seconds 1
-        }
-        Write-Progress -Id 1 -Activity $Message -Status "Completed" -PercentComplete 100 -Completed
-    }
-}
+
 
 function Get-DomainUserList
 {
